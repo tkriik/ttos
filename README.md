@@ -1,3 +1,14 @@
 # ttos
 
-`make -f i386.mk clean img && qemu-system-i386 ttos_x86.img`
+## deps
+
+ * gcc/clang
+ * nasm
+ * make
+ * qemu
+
+## run
+
+```
+make -f i386.mk clean run
+```

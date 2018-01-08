@@ -200,31 +200,6 @@ enter_kernel:
 	call KERNEL_OFFSET
 	jmp $ ; TODO: don't return
 
-; VGA utilities
-
-VGA_MEM equ 0x000b8000	; VGA memory start region
-VGA_WB	equ 0x0f	; White-on-black VGA cell color
-
-vga_println:
-	push eax
-	push ebx
-	push edx
-	mov edx, VGA_MEM
-_vga_println_loop:
-	mov al, [ebx]
-	mov ah, VGA_WB
-	cmp al, 0
-	je _vga_println_ret
-	mov [edx], ax
-	inc ebx
-	add edx, 2
-	jmp _vga_println_loop
-_vga_println_ret:
-	pop edx
-	pop ebx
-	pop eax
-	ret
-
 ; Messages
 
 MSG_WELCOME:

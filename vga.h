@@ -3,6 +3,9 @@
 
 #include "sys.h"
 
+#define VGA_W 80
+#define VGA_H 25
+
 enum vga_color {
 	VGA_BLACK	= 0x0,
 	VGA_BLUE	= 0x1,
@@ -22,6 +25,17 @@ enum vga_color {
 	VGA_WHITE	= 0xf
 };
 
+struct vga_console {
+	enum	vga_color bg, fg;
+	size_t	cur_line;
+	uint8_t	lines[VGA_H][VGA_W];
+};
+
+void vga_console_init(struct vga_console *, enum vga_color, enum vga_color);
+void vga_console_println(struct vga_console *, const char *);
+void vga_console_draw(struct vga_console *);
+
 void vga_put(uint8_t, enum vga_color, enum vga_color, size_t, size_t);
+void vga_clear(void);
 
 #endif

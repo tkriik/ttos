@@ -7,6 +7,7 @@ KERNEL_OBJ=	kernel.o \
 KERNEL_BIN=	kernel.bin
 
 KERNEL_CFLAGS=	-c \
+		-I ./ \
 		-std=c99 \
 		-pedantic \
 		-pedantic-errors \

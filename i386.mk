@@ -1,11 +1,11 @@
 include kernel.mk
 
-BOOT_SRC=	boot_x86.nasm
-BOOT_BIN=	boot_x86.bin
+BOOT_SRC=	boot_i386.nasm
+BOOT_BIN=	boot_i386.bin
 
 KERNEL_OFFSET=	0x1000
 
-IMG=		ttos_x86.img
+IMG=		ttos_i386.img
 
 img: $(IMG)
 

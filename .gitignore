@@ -1,5 +1,6 @@
 # Custom
-bin/
+*.bin
+*.img
 
 # Prerequisites
 *.d

@@ -8,12 +8,17 @@ KERNEL_OFFSET=	0x1000
 
 IMG=		ttos_i386.img
 
-img: $(IMG)
+all: image
+
+run: image
+	qemu-system-i386 $(IMG)
+
+image: $(IMG)
 
 include kernel.mk
 
-$(IMG): $(KERNEL_BIN) $(BOOT_BIN)
-	cat $(BOOT_BIN) $(KERNEL_BIN) > $(IMG)
+$(IMG): $(BOOT_BIN) $(KERNEL_BIN)
+	cat $^ > $(IMG)
 
 $(BOOT_BIN): $(BOOT_SRC)
 	nasm -DKERNEL_OFFSET=$(KERNEL_OFFSET) -o $(BOOT_BIN) $(BOOT_SRC)

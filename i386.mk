@@ -1,4 +1,4 @@
-ARCH_CFLAGS=	-m32
+ARCH_CFLAGS=	-D_I386_ -m32
 ARCH_LDFLAGS=	-m elf_i386
 
 BOOT_SRC=	boot_i386.nasm

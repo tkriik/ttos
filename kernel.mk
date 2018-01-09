@@ -1,7 +1,11 @@
 KERNEL_SRC=	kernel.c \
+		bcons.c \
+		mem.c \
 		vga.c
 
 KERNEL_OBJ=	kernel.o \
+		bcons.o \
+		mem.o \
 		vga.o
 
 KERNEL_BIN=	kernel.bin
@@ -20,6 +24,12 @@ KERNEL_CFLAGS=	-c \
 		-ffreestanding
 
 kernel.o: kernel.c
+	$(CC) $(KERNEL_CFLAGS) $(ARCH_CFLAGS) $< -o $@
+
+bcons.o: bcons.c bcons.h
+	$(CC) $(KERNEL_CFLAGS) $(ARCH_CFLAGS) $< -o $@
+
+mem.o: mem.c mem.h
 	$(CC) $(KERNEL_CFLAGS) $(ARCH_CFLAGS) $< -o $@
 
 vga.o: vga.c vga.h

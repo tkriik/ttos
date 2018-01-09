@@ -1,14 +1,16 @@
 #include <sys.h>
 #include <vga.h>
 
+#include <bcons.h>
+
 void
 kmain(void)
 {
-	struct vga_console c;
+	struct bcons bcons;
 
-	vga_console_init(&c, VGA_DGRAY, VGA_LRED);
-	vga_console_println(&c, "Welcome to Tanel's Test Operating System!");
-	vga_console_println(&c, "This is output.");
-	vga_console_println(&c, "Nothing happens yet.");
-	vga_console_draw(&c);
+	bcons_init(&bcons);
+	for (size_t i = 0; i < 125; i++)
+		bcons_puts(&bcons, "YELLOW SUBMARINE");
+
+	vga_draw_bcons(&bcons, VGA_LRED, VGA_DGRAY);
 }
